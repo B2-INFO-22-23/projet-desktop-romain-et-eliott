@@ -22,6 +22,7 @@ namespace e_commerce_desktop
     {
         public MainWindow()
         {
+            Console.WriteLine("test");
             InitializeComponent();
         }
     }
