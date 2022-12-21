@@ -1,4 +1,5 @@
-﻿using System;
+﻿using e_commerce_desktop.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,18 @@ namespace e_commerce_desktop
     {
         public MainWindow()
         {
-            Console.WriteLine("test");
+            ConnectionDAO connectionDAO = new ConnectionDAO();
+            var connection = connectionDAO.Connect("localhost", "root", "", "e-commerce");
+            if (connection != null)
+            {
+                connection.Open();
+                Products products = new Products();
+                products.GetProducts(connection);
+                Console.WriteLine(products.products);
+
+            }
+            
+
             InitializeComponent();
         }
     }
