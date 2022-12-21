@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Label Content="Connexion:" HorizontalAlignment="Center" Height="40" Margin="0,56,0,0" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Center" FontSize="20"/>
+        <TextBox Name="nom" HorizontalAlignment="Center" Height="26" Margin="0,153,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="188"/>
+        <Label Content="Nom:" HorizontalAlignment="Left" Height="24" Margin="306,129,0,0" VerticalAlignment="Top" Width="77" FontSize="10"/>
+        <TextBox Name="mot_de_passe" HorizontalAlignment="Center" Height="26" Margin="0,217,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="188" />
+        <Label Content="Mot de Passe:" HorizontalAlignment="Left" Height="24" Margin="306,193,0,0" VerticalAlignment="Top" Width="77" FontSize="10"/>
+        <Button Content="Envoyer" HorizontalAlignment="Center" Height="33" Margin="0,264,0,0" Width="116" VerticalAlignment="Top" Click="Button_Click"/>
 
     </Grid>
 </Window>
