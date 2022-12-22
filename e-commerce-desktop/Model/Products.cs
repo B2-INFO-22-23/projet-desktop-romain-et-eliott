@@ -64,7 +64,6 @@ namespace e_commerce_desktop.Model
         {
             MySqlConnection newConnection = connection.Clone();
             newConnection.Open();
-            Product product = new Product();
             using var command = newConnection.CreateCommand();
 
             var dateAndTime = DateTime.Now;
@@ -84,18 +83,10 @@ namespace e_commerce_desktop.Model
         {
             MySqlConnection newConnection = connection.Clone();
             newConnection.Open();
-            Product product = new Product();
             using var command = newConnection.CreateCommand();
 
 
-            command.CommandText = @"UPDATE FROM products SET 
-ProductName = @ProductName,
-Price = @Price,
-Quantity = @Quantity,
-Publishers = @Publishers,
-CategoryId = @CategoryId,
-Description = @Description
-WHERE ProductId = @id;";
+            command.CommandText = @"UPDATE products SET ProductName=@ProductName, Price=@Price, Quantity=@Quantity, Publishers=@Publishers, CategoryId=@CategoryId, Description=@Description WHERE ProductId=@id;";
 
             command.Parameters.AddWithValue("@ProductName", ProductName);
             command.Parameters.AddWithValue("@Price", Price);
@@ -113,7 +104,6 @@ WHERE ProductId = @id;";
         {
             MySqlConnection newConnection = connection.Clone();
             newConnection.Open();
-            Product product = new Product();
             using var command = newConnection.CreateCommand();
             command.CommandText = @"SET FOREIGN_KEY_CHECKS=0;
 DELETE FROM products WHERE ProductId=" + id + ";" +

@@ -22,11 +22,7 @@ namespace e_commerce_desktop
             {
                 connection.Open();
                 Products products = new Products();
-                List<Product> products1 = products.GetProducts(connection);
-                Product productTest = products.GetProductById(82272, connection);
-                //products.AddProduct(connection, "test", 1, 30, "Wyatt Osinski", 80414, "Fuga odio veniam ex cupiditate. Saepe eum laborum ea ipsum sit deserunt. Quidem ullam voluptas aut qui ab sequi. Deleniti qui quidem quo assumenda neque ipsum. Harum dignissimos alias error sunt corrupti quo ullam provident. Architecto consequuntur veniam iste exercitationem. Voluptatem hic aut rerum non quasi. Facilis dolor incidunt omnis molestiae ducimus voluptatum. Eum quia non harum facilis pariatur. Rerum est et eum asperiores officiis. Commodi tempora soluta adipisci voluptatum aut consequatur quis. Facere et ipsam accusamus eius molestiae. Perspiciatis saepe accusantium vel dolorem.");
-                Console.WriteLine(products1);
-                //Console.WriteLine(productTest);
+                
 
             }
             
