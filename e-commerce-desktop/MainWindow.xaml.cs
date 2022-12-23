@@ -33,14 +33,16 @@ namespace e_commerce_desktop
         {
             string name = nom.Text;
             string mdp = mot_de_passe.Text;
-            if (name == "root" && mdp == "")
+            ConnectionDAO connectionDAO = new ConnectionDAO();
+            var connection = connectionDAO.Connect("localhost", name, mdp, "e-commerce");
+            if (connection != null)
             {
-                Produit pg = new Produit(name, mdp);
+                Productpage pg = new Productpage(connection, this);
                 this.Content = pg;
             }
             else
             {
-              //error.Text = "Identifiants incorrects";
+                //error.Text = "Identifiants incorrects";
             }
         }
 
