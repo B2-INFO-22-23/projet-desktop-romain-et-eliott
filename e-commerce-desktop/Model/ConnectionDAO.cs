@@ -1,4 +1,4 @@
-﻿using MySqlConnector;
+using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace e_commerce_desktop.Model
         public MySqlConnection? connection;
 
         // set these values correctly for your database server
-        
+
 
         public MySqlConnection? Connect(string server, string userId, string password, string database)
         {
@@ -29,9 +29,9 @@ namespace e_commerce_desktop.Model
 
             using var connection = new MySqlConnection(builder.ConnectionString);
             connection.Open();
-            
+
             this.connection = connection.Clone();
-            
+
             return connection.Clone();
         }
     }

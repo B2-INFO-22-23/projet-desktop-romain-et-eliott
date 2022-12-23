@@ -1,6 +1,7 @@
 ﻿using MySqlConnector;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,6 @@ namespace e_commerce_desktop.Model
 {
     internal class Products
     {
-
 
         public List<Product> GetProducts(MySqlConnection connection)
         {
@@ -23,7 +23,7 @@ namespace e_commerce_desktop.Model
 
             while (reader.Read())
             {
-                Product product = new Product();
+                Product product = new();
                 product.ProductId = (int)reader.GetValue(0);
                 product.ProductName = (string)reader.GetValue(1);
                 product.Price = (float)reader.GetValue(2);
@@ -38,13 +38,13 @@ namespace e_commerce_desktop.Model
             return products;
         }
 
-        public Product GetProductById (int id, MySqlConnection connection)
+        public Product GetProductById(int id, MySqlConnection connection)
         {
             MySqlConnection newConnection = connection.Clone();
             newConnection.Open();
             Product product = new Product();
             using var command = newConnection.CreateCommand();
-            command.CommandText = @"SELECT * FROM products WHERE ProductId="+id+";";
+            command.CommandText = @"SELECT * FROM products WHERE ProductId=" + id + ";";
             MySqlDataReader reader = command.ExecuteReader();
             if (reader.Read())
             {
@@ -60,7 +60,7 @@ namespace e_commerce_desktop.Model
             return product;
         }
 
-        public void AddProduct(MySqlConnection connection, string ProductName, float Price, int Quantity, string Publishers, int CategoryId, string Description)
+        public void AddProduct(MySqlConnection connection, string ProductName, float Price, int Quantity, string Publishers,int CategoryId, string Description)
         {
             MySqlConnection newConnection = connection.Clone();
             newConnection.Open();
@@ -68,13 +68,13 @@ namespace e_commerce_desktop.Model
 
             var dateAndTime = DateTime.Now;
             var date = dateAndTime.Date;
-            command.CommandText = "INSERT INTO products (ProductName, Price, Quantity, Publishers, CategoryId, CreationDate, Description) VALUE (@ProductName, @Price, @Quantity, @Publishers, @CategoryId, @CreationDate, @Description)";
+            command.CommandText = "INSERT INTO products (ProductName, Price, Quantity, Publishers, CategoryId, CreationDate, Description) VALUE (@ProductName, @Price, @Quantity, @Publishers,@CategoryId, @CreationDate, @Description)";
             command.Parameters.AddWithValue("@ProductName", ProductName);
             command.Parameters.AddWithValue("@Price", Price);
             command.Parameters.AddWithValue("@Quantity", Quantity);
             command.Parameters.AddWithValue("@Publishers", Publishers);
-            command.Parameters.AddWithValue("@CategoryId", CategoryId);
             command.Parameters.AddWithValue("@Description", Description);
+            command.Parameters.AddWithValue("@CategoryId", CategoryId);
             command.Parameters.AddWithValue("@CreationDate", date);
             command.ExecuteNonQuery();
         }
