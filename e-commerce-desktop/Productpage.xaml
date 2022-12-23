@@ -7,9 +7,13 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Produit">
-    <Grid Background="White">
-        <Label Content="Produits" HorizontalAlignment="Center" Height="67" Margin="0,33,0,0" VerticalAlignment="Top" Width="212" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"/>
-        <ListView Name="produits" HorizontalAlignment="Center" Height="600" Margin="0,105,0,0" VerticalAlignment="Top" Width="1000" Background="White" HorizontalContentAlignment="Center">
+    <Grid Background="White" Margin="8,25,-8,-25">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="43*"/>
+            <ColumnDefinition Width="157*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Produits" HorizontalAlignment="Left" Height="67" Margin="122,10,0,0" VerticalAlignment="Top" Width="212" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Grid.Column="1"/>
+        <ListView Name="produits" HorizontalAlignment="Left" Height="600" Margin="42,271,0,0" VerticalAlignment="Top" Width="1000" Background="White" HorizontalContentAlignment="Center" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ProductId" DisplayMemberBinding="{Binding ProductId}" />
@@ -23,5 +27,10 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button Content="Delete" HorizontalAlignment="Left" Height="34" Margin="429,179,0,0" VerticalAlignment="Top" Width="144" Grid.Column="1" Click="Button_Click_1"/>
+        <TextBox x:Name="ProductId" HorizontalAlignment="Left" Height="26" Margin="407,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="188" Grid.Column="1" />
+        <Button Grid.Column="1" Content="Add Product" HorizontalAlignment="Left" Height="67" Margin="0,158,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click"/>
+        <TextBox x:Name="ProductId2" HorizontalAlignment="Left" Height="26" Margin="134,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="188" Grid.Column="1" />
+        <Button Grid.Column="1" Content="Update Product" HorizontalAlignment="Left" Height="34" Margin="166,179,0,0" VerticalAlignment="Top" Width="124" Click="Button_Click_2" />
     </Grid>
 </Page>

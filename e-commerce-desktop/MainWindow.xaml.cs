@@ -36,7 +36,7 @@ namespace e_commerce_desktop
             var connection = connectionDAO.Connect("localhost", name, mdp, "desktop");
             if (connection != null)
             {
-                Productpage pg = new Productpage(connection);
+                Productpage pg = new Productpage(connection,this);
                 this.Content = pg;
             }
             else

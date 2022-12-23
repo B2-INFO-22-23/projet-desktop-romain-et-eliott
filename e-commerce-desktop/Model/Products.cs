@@ -11,7 +11,6 @@ namespace e_commerce_desktop.Model
 {
     internal class Products
     {
-        //public DataTable table = new();
 
         public List<Product> GetProducts(MySqlConnection connection)
         {
@@ -20,8 +19,6 @@ namespace e_commerce_desktop.Model
             List<Product> products = new List<Product>();
             using var command = newConnection.CreateCommand();
             command.CommandText = @"SELECT * FROM products";
-            //MySqlDataAdapter cmd = new MySqlDataAdapter(command);
-            // cmd.Fill(table);
             MySqlDataReader reader = command.ExecuteReader();
 
             while (reader.Read())
@@ -63,7 +60,7 @@ namespace e_commerce_desktop.Model
             return product;
         }
 
-        public void AddProduct(MySqlConnection connection, string ProductName, float Price, int Quantity, string Publishers, int CategoryId, string Description)
+        public void AddProduct(MySqlConnection connection, string ProductName, float Price, int Quantity, string Publishers,int CategoryId, string Description)
         {
             MySqlConnection newConnection = connection.Clone();
             newConnection.Open();
@@ -71,13 +68,13 @@ namespace e_commerce_desktop.Model
 
             var dateAndTime = DateTime.Now;
             var date = dateAndTime.Date;
-            command.CommandText = "INSERT INTO products (ProductName, Price, Quantity, Publishers, CategoryId, CreationDate, Description) VALUE (@ProductName, @Price, @Quantity, @Publishers, @CategoryId, @CreationDate, @Description)";
+            command.CommandText = "INSERT INTO products (ProductName, Price, Quantity, Publishers, CategoryId, CreationDate, Description) VALUE (@ProductName, @Price, @Quantity, @Publishers,@CategoryId, @CreationDate, @Description)";
             command.Parameters.AddWithValue("@ProductName", ProductName);
             command.Parameters.AddWithValue("@Price", Price);
             command.Parameters.AddWithValue("@Quantity", Quantity);
             command.Parameters.AddWithValue("@Publishers", Publishers);
-            command.Parameters.AddWithValue("@CategoryId", CategoryId);
             command.Parameters.AddWithValue("@Description", Description);
+            command.Parameters.AddWithValue("@CategoryId", CategoryId);
             command.Parameters.AddWithValue("@CreationDate", date);
             command.ExecuteNonQuery();
         }

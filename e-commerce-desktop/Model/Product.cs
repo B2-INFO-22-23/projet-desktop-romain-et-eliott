@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace e_commerce_desktop.Model
 {
-    struct Product
+    class Product
     {
-        public int ProductId;
-        public string ProductName;
-        public float Price;
-        public int Quantity;
-        public string Publishers;
-        public int CategoryId;
-        public string CreationDate;
-        public string Description;
+        public int ProductId { get; set; }
+        public string ProductName { get; set; }
+        public float Price { get; set; }
+        public int Quantity { get; set; }
+        public string Publishers { get; set; }
+        public int CategoryId { get; set; }
+        public string CreationDate { get; set; }
+        public string Description { get; set; }
     }
 }
