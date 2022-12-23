@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "e-commerce-desktop/1.0.0": {
+        "dependencies": {
+          "MySqlConnector": "2.2.2"
+        },
+        "runtime": {
+          "e-commerce-desktop.dll": {}
+        }
+      },
+      "MySqlConnector/2.2.2": {
+        "runtime": {
+          "lib/net7.0/MySqlConnector.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.2.2.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "e-commerce-desktop/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MySqlConnector/2.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rhy856Z1LrSblkC//OkvLIXBuiLhwlBAwDBrdHJEkIhu3eZRCQQg9sDNpt7eEVXtIFAMyEXkaky0bYpoGKps3g==",
+      "path": "mysqlconnector/2.2.2",
+      "hashPath": "mysqlconnector.2.2.2.nupkg.sha512"
+    }
+  }
+}
