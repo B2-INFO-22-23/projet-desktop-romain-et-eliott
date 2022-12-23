@@ -44,23 +44,26 @@ namespace e_commerce_desktop
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            int Productid = Convert.ToInt32(ProductId.Text);
-            //var erreur = Erreur.Content;
-            Products Productslist = new();
-            Productslist.DeleteProduct(this.connection, Productid);
-            var product = Productslist.GetProducts(this.connection);
-            for (int i = 0; i < product.Count; i++)
-            {
-                produits.ItemsSource = product;
+            if (ProductId.Text!= "") {
+                int Productid = Convert.ToInt32(ProductId.Text);
+                //var erreur = Erreur.Content;
+                Products Productslist = new();
+                Productslist.DeleteProduct(this.connection, Productid);
+                var product = Productslist.GetProducts(this.connection);
+                for (int i = 0; i < product.Count; i++)
+                {
+                    produits.ItemsSource = product;
+                }
+                if (Productslist != null)
+                {
+                    //erreur =" Suprression Terminé";
+                }
+                else
+                {
+                    //erreur = "Echec de la suppression";
+                }
             }
-            if (Productslist != null)
-            {
-                //erreur =" Suprression Terminé";
-            }
-            else
-            {
-                //erreur = "Echec de la suppression";
-            }
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -71,9 +74,18 @@ namespace e_commerce_desktop
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            int Productid = Convert.ToInt32(ProductId2.Text);
-            UpdateProduct pg3 = new UpdateProduct(connection, Productid,this.mainWindow);
-            this.mainWindow.Content = pg3;
+            if (ProductId2.Text != "")
+            {
+                int Productid = Convert.ToInt32(ProductId2.Text);
+                Products Productslist = new();
+                if (Productslist.GetProductById(Productid, connection).ProductName != null)
+                {
+                    UpdateProduct pg3 = new UpdateProduct(connection, Productid, this.mainWindow);
+                    this.mainWindow.Content = pg3;
+                }
+            }
+            
+            
         }
     }
 }

@@ -16,7 +16,7 @@ namespace e_commerce_desktop
         public MainWindow()
         {
             ConnectionDAO connectionDAO = new ConnectionDAO();
-            var connection = connectionDAO.Connect("localhost", "root", "", "desktop");
+            var connection = connectionDAO.Connect("localhost", "root", "", "e-commerce");
             if (connection != null)
             {
                 connection.Open();
@@ -33,7 +33,7 @@ namespace e_commerce_desktop
             string name = nom.Text;
             string mdp = mot_de_passe.Text;
             ConnectionDAO connectionDAO = new ConnectionDAO();
-            var connection = connectionDAO.Connect("localhost", name, mdp, "desktop");
+            var connection = connectionDAO.Connect("localhost", name, mdp, "e-commerce");
             if (connection != null)
             {
                 Productpage pg = new Productpage(connection,this);

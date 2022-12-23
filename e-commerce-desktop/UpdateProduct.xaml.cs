@@ -38,13 +38,61 @@ namespace e_commerce_desktop
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Products Productslist = new();
-            Productslist.GetProductById(Productid,this.connection);
-            string Productname = ProductName.Text;
-            int Categoryid = Convert.ToInt32(CategoryId.Text);
-            string publishers = Publishers.Text;
-            string description = Descrption.Text;
-            int price = Convert.ToInt32(Price.Text);
-            int quantity = Convert.ToInt32(Quantity.Text);
+            Product product = Productslist.GetProductById(Productid,this.connection);
+            string Productname;
+            int Categoryid;
+            string publishers;
+            string description;
+            float price;
+            int quantity;
+
+            if (ProductName.Text != "") {
+                Productname = ProductName.Text;
+            } else
+            {
+                Productname = product.ProductName;
+            }
+            if (CategoryId.Text!= "")
+            {
+                Categoryid = Convert.ToInt32(CategoryId.Text);
+            }
+            else
+            {
+                Categoryid = product.CategoryId;
+            }
+            if (Publishers.Text!= "")
+            {
+                publishers = Publishers.Text;
+            }
+            else
+            {
+                publishers = product.Publishers;
+            }
+            if (Descrption.Text!= "")
+            {
+                description = Descrption.Text;
+            }
+            else
+            {
+                description= product.Description;
+            }
+            if (Price.Text!= "")
+            {
+                price = Convert.ToInt32(Price.Text);
+            }
+            else
+            {
+                price= product.Price;
+            }
+            if (Quantity.Text!= "")
+            {
+                quantity = Convert.ToInt32(Quantity.Text);
+            }
+            else
+            {
+                quantity= product.Quantity;
+            }
+    
             Productslist.UpdateProduct(connection, this.Productid, Productname, price, quantity, publishers, Categoryid, description);
             Productpage pg3 = new Productpage(connection,this.mainWindow);
             this.mainWindow.Content = pg3;
